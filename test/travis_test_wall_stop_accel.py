@@ -5,7 +5,7 @@ import time, sys
 from std_msgs.msg import UInt16
 from std_srvs.srv import Trigger, TriggerResponse
 
-class WallStopTest(unittest.TestCase):
+class WallStopAccelTest(unittest.TestCase):
     def test_node_exist(self):
         nodes = rosnode.get_node_names()
         self.assertIn('/wall_stop',nodes, "node does not exist")
