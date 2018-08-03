@@ -20,9 +20,9 @@ class WallStopAccelTest(unittest.TestCase):
         return left,right
 
 
-    def test_node_exist(self):
-        nodes = rosnode.get_node_names()
-        self.assertIn('/wall_stop',nodes, "node does not exist")
+#    def test_node_exist(self):
+#        nodes = rosnode.get_node_names()
+#        self.assertIn('/wall_stop',nodes, "node does not exist")
 
 #    def set_sensor_values(self,lf,ls,rs,rf):
 #       with open("/dev/rtlightsensor0","w") as f:
@@ -50,7 +50,7 @@ class WallStopAccelTest(unittest.TestCase):
         left, right = self.set_and_get(40,0,0,9) #total:49
         self.assertTrue(2000 < left == right,"can't accerelate")
 
-        left, right = self.set_and_get(15,0,20,15) #total:49
+        left, right = self.set_and_get(15,0,20,15) #total:50
         self.assertTrue(left == right == 0,"can't stop again")
 
 if __name__ == '__main__':
