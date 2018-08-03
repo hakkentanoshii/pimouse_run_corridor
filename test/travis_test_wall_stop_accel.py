@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import unittest, rostest
 import rosnode, rospy
-import time, sys
-from std_msgs.msg import UInt16
-from std_srvs.srv import Trigger, TriggerResponse
+import time
+#from std_msgs.msg import UInt16
+#from std_srvs.srv import Trigger, TriggerResponse
 
 class WallStopAccelTest(unittest.TestCase):
     def set_and_get(self,lf,ls,rs,rf):
@@ -38,19 +38,19 @@ class WallStopAccelTest(unittest.TestCase):
     def test_io(self):
         #self.set_sensor_values(400,100,100,0)
         #time.sleep(0.3)
-        left, right = self.set_and_get(400,100,100,0) #total:600
+        left, right = self.set_and_get(400,100,100,0) #total: 600
         self.assertTrue(left ==right == 0,"can't stop")
 
         #self.set_sensor_values(400,0,0,99)
         #time.sleep(0.3)
-        left, right = self.set_and_get(40,0,0,9) #total:49
+        left, right = self.set_and_get(40,0,0,9) #total: 49
         self.assertTrue(0 < left == right < 1000,"can't move again")
 
         time.sleep(5.0)
-        left, right = self.set_and_get(40,0,0,9) #total:49
+        left, right = self.set_and_get(40,0,0,9) #total: 49
         self.assertTrue(2000 < left == right,"can't accerelate")
 
-        left, right = self.set_and_get(15,0,20,15) #total:50
+        left, right = self.set_and_get(15,0,20,15) #total: 50
         self.assertTrue(left == right == 0,"can't stop again")
 
 if __name__ == '__main__':
